@@ -4,7 +4,7 @@ import Context from '@/components/clients/Context'
 import { redirect } from 'next/navigation';
 import React, { useContext } from 'react'
 
-const page = () => {
+const Page = () => {
     const {user} = useContext(Context);
 
     if(!user._id) return redirect('/login');
@@ -20,4 +20,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

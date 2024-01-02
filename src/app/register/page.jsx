@@ -6,7 +6,7 @@ export const metadata = {
     description:"Register, to become member of our community"
 }
 
-const page = () => {
+const Page = () => {
   return (
     <>
       <div className="container mx-auto my-3">
@@ -23,4 +23,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

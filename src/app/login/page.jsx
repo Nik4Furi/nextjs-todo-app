@@ -6,10 +6,9 @@ import {redirect} from 'next/navigation'
 import Button from '@/components/clients/Button';
 import Context from '@/components/clients/Context';
 
-import toast from 'react-hot-toast';
+import toast from 'react-hot-toast'
 
-
-const page = () => {
+const Page = () => {
 
   const [form, setForm] = useState({ email: '', password: '' });
 
@@ -85,4 +84,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
