@@ -1,13 +1,19 @@
 
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Context from './Context'
 
 const State = ({children}) => {
     const a = "Nikhil";
 
     const [user,setUser] = useState({});
+
+    useEffect(()=>{
+      fetch('/api/me').then(res => res.json()).then(data =>{
+        if(data.success) setUser(data.user)
+      })
+    },[])
 
 
   return (

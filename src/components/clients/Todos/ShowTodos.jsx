@@ -1,17 +1,17 @@
 import React from 'react'
 import ShowTodosCheckBox from './ShowTodosCheckBox'
 
-const ShowTodos = ({title,description}) => {
+const ShowTodos = ({title,description,completed,id}) => {
   return (
     <>
       <section>
-        <div className="card border border-1 border-black rounded-md p-3">
+        <div className="card border border-1 border-black rounded-md p-3 my-3">
             <div className="flex items-center justify-between">
                 <div><h2 className="text-md font-bold text-capitalize">{title}</h2></div>
                 <div className="flex items-center">
                     
                     {/* Here we have buttons and checkbox  */}
-                    <ShowTodosCheckBox completed={true} />
+                    <ShowTodosCheckBox completed={completed} id={id} />
                 </div>
             </div>
 

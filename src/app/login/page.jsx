@@ -6,7 +6,7 @@ import {redirect} from 'next/navigation'
 import Button from '@/components/clients/Button';
 import Context from '@/components/clients/Context';
 
-import toast from 'reach-hot-taost'
+import toast from 'react-hot-toast';
 
 
 const page = () => {

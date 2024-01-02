@@ -6,19 +6,37 @@ import Context from './Context'
 import Link from 'next/link';
 import Button from './Button';
 
-const Auth = () => {
-  const user = useContext(Context);
-  // console.log(user)
-  return (
-    <>
-      <div className="flex items-center">
-        <div className='mx-2 my-2'>
+import toast from 'react-hot-toast'
 
-          <Link href={'/login'} className='hover:text-red-400 text-white mx-2 text-sm'><Button title={"Login"} /></Link>
-        </div>
-        <Link href={'/logout'} className='hover:text-red-400 text-white mx-2 text-sm'><Button title={"Logout"} /></Link>
+const Auth = () => {
+  const { user, setUser } = useContext(Context);
+
+  const handleLogout = async () => {
+    try {
+
+      const res = await fetch('/api/auth/logout');
+      const data = await res.json();
+
+      if (!data.success) return toast.error(data.msg);
+
+      setUser({});
+
+      toast.success(data.msg)
+
+    } catch (error) {
+      return toast.error(error);
+    }
+  }
+
+  return (user?._id ?
+
+    <button onClick={handleLogout} className='p-2 mx-auto my-auto  w-[100%] bg-red-700 hover:bg-red-600 text-white cursor-pointer rounded-md'>Logout</button>
+    :
+    <div className='mx-2 my-2'>
+      <div className="flex items-center">
+        <Link href={'/login'} className='hover:text-red-400 text-white mx-2 text-sm'><Button title={"Login"} /></Link>
       </div>
-    </>
+    </div>
   )
 }
 

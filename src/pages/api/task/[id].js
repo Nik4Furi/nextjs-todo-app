@@ -15,7 +15,7 @@ export default async function handler(req, res) {
 
         if (req.method === 'PUT') {
 
-            const task = await taskModel.findOne({ user_id: user._id }, { _id: taskId });
+            const task = await taskModel.findById(taskId);
 
             if (!task) return res.status(404).json({ success: false, msg: "Task is not found" })
 

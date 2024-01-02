@@ -8,12 +8,9 @@ export default async function handler (req,res){
 
         if(req.method !== 'POST') return res.status(400).json({success:false,msg:"Bad request"})
 
-        const {name,email,password,cpassword} = req.body;
+        const {name,email,password} = req.body;
 
-        if(!email || !password || !cpassword || !name) return res.status(409).json({success:false,msg:"All fields are required"})
-
-        if(password !== cpassword) return res.status(409).json({success:false,msg:"Password and Confirm Password didn't match"})
-
+        if(!email || !password || !name) return res.status(409).json({success:false,msg:"All fields are required"})
 
         await ConnectDB();
 

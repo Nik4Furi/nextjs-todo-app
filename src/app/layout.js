@@ -1,15 +1,19 @@
 import Header from '@/components/server/Header'
-import {Toaster} from 'react-hot-toast'
+import { Toaster } from 'react-hot-toast';
 
 import '../styles/globals.css'
 import State from '@/components/clients/State'
 
 export const metadata = {
-  title: 'nextjs-todo-app',
-  description: 'Create the app using NextJS',
+  title:"NextJS-Todo-app",
+  description:"NThat was a nextjs-todo app"
 }
 
+
+
 export default function RootLayout({ children }) {
+  
+
   return (
     <html lang="en">
       <body>

@@ -13,7 +13,7 @@ const Header = () => {
         <nav >
             <ul className='flex items-center justify-center md:flex-row p-3'>
                 <li><Link href={'/'} className='hover:text-red-400 text-white mx-2 text-sm'>Home</Link></li>
-                <li><Link href={'/about'} className='hover:text-red-400 text-white mx-2 text-sm'>About</Link></li>
+                <li><Link href={'/profile'} className='hover:text-red-400 text-white mx-2 text-sm'>Profile</Link></li>
                 <li><Auth /></li>
             </ul>
         </nav>

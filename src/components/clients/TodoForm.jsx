@@ -1,20 +1,56 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Button from './Button'
+import toast from 'react-hot-toast'
+
+import {redirect, useRouter} from 'next/navigation'
+import Context from './Context'
 
 const TodoForm = () => {
     const [form,setForm] = useState({title:'',description:''});
+
+    const {user} = useContext(Context)
+
+    const router = useRouter();
     
     //------------ Function to onchange the form data
     const handleOnChange = (e) => setForm({...form,[e.target.name]:e.target.value})
 
     //--------- Function to adding a new todo
-    const handleAddNewTodo = (e)=>{
+    const handleAddNewTodo = async(e)=>{
         e.preventDefault();
 
         console.log(form);
+
+        try {
+            const res = await fetch('/api/newtask',{
+              method:'POST',
+              headers : {
+                'Content-Type' : "application/json"
+              },
+              body: JSON.stringify(form)
+            });
+
+            const data = await res.json();
+
+            console.log('data',data);
+
+            if(!data.success) return toast.error(data.msg);
+
+            toast.success(data.msg);
+
+            router.refresh();
+
+            setForm({title:'',description:''})
+
+
+        } catch (error) {
+          return toast.error(error.message);
+        }
     }
+
+    if(!user._id) return redirect('/login');
 
   return (
     <>
